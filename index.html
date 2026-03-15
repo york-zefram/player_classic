@@ -87,47 +87,48 @@
         .player-wrapper {
             flex: 0 0 100vw; 
             width: 100vw;
-            padding: 10px 10px 5px 10px; /* 余白を大幅に削減 */
+            padding: 5px 10px 5px 10px;
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             height: 100%;
         }
 
-        header.glass-header { text-align: center; padding: 2px 0 5px 0; flex-shrink: 0; }
+        header.glass-header { text-align: center; padding: 2px 0 2px 0; flex-shrink: 0; }
         .app-title { 
             margin: 0;
             color: var(--edison-bright); font-family: var(--font-ogg);
-            font-size: 0.9rem; letter-spacing: 1px; text-shadow: 0 0 10px var(--edison-glow); 
+            font-size: 1.5rem; 
+            letter-spacing: 1px; text-shadow: 0 0 10px var(--edison-glow); 
             white-space: nowrap;
         }
 
-        .info-header { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0; flex-shrink: 0; }
-        .text-fields { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 2px; overflow: hidden; }
+        .info-header { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0; flex-shrink: 0; }
+        .text-fields { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 0px; overflow: hidden; }
         .marquee-box { width: 100%; overflow: hidden; white-space: nowrap; text-align: center; min-height: 1.2em; }
         .marquee-inner { display: inline-block; white-space: nowrap; }
         .scrolling-content { display: inline-block; padding-right: 50px; animation: scroll-slow 15s linear infinite; }
         @keyframes scroll-slow { 0% { transform: translateX(0); } 10% { transform: translateX(0); } 85% { transform: translateX(-50%); } 100% { transform: translateX(-50%); } }
         
-        #title-text { font-family: var(--font-ogg); font-weight: bold; font-size: 1.1rem; color: #fff; text-shadow: 0 0 10px var(--edison-glow); }
+        #title-text { font-family: var(--font-ogg); font-weight: bold; font-size: 1.2rem; color: #fff; text-shadow: 0 0 10px var(--edison-glow); }
         .artist-row { display: flex; flex-direction: column; align-items: center; width: 100%; }
-        #artist-text { font-family: var(--font-ogg); font-size: 0.8rem; color: var(--edison-bright); text-shadow: 0 0 8px var(--edison-glow); }
+        #artist-text { font-family: var(--font-ogg); font-size: 0.9rem; color: var(--edison-bright); text-shadow: 0 0 8px var(--edison-glow); }
 
         .album-art-container {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 8px 0; /* マージンを削減 */
+            margin: 5px 0 15px 0;
             flex-shrink: 1;
             min-height: 0;
         }
         
         #album-art-wrapper {
-            width: 50vw; /* サイズダウン */
-            height: 50vw;
-            max-width: 160px;
-            max-height: 160px;
+            width: 75vw;
+            height: 75vw;
+            max-width: 240px;
+            max-height: 240px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px var(--edison-glow);
@@ -139,23 +140,24 @@
         }
 
         #album-art { width: 100%; height: 100%; object-fit: cover; display: none; }
-        #album-placeholder-icon { font-size: 3rem; color: #555; }
+        #album-placeholder-icon { font-size: 6rem; color: #555; }
 
         .main-controls-container {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; 
+            justify-content: space-around; 
             align-items: center;
             width: 100%;
-            padding-bottom: 5px; 
+            padding-bottom: 2px; 
         }
 
         section.container-2 { 
             position: relative;
             width: 90%;
             display: flex; flex-direction: column; align-items: center;
-            padding: 5px 0; 
+            margin-top: 15px; 
+            padding: 2px 0; 
         }
         .seek-wrapper { 
             position: relative; width: 100%; height: 3px; display: flex; align-items: center; 
@@ -165,13 +167,21 @@
         input[type="range"]#main-seek { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 30px; outline: none; margin: 0; padding: 0; }
         input[type="range"]#main-seek::-webkit-slider-thumb { -webkit-appearance: none; height: var(--thumb-size); width: var(--thumb-size); border-radius: 50%; background: #fff; box-shadow: 0 0 10px var(--edison-bright); cursor: pointer; }
 
-        .time-labels { width: 100%; display: flex; justify-content: space-between; margin-top: 2px; font-size: 0.65rem; color: var(--edison-bright); }
+        .time-labels { 
+            width: 100%; 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 8px; 
+            font-size: 0.75rem; 
+            color: var(--edison-bright);
+            font-family: sans-serif; /* 指定の通り等幅寄りのsans-serifに変更 */
+        }
 
         .container-3 { 
             width: 100%;
             display: flex; justify-content: center; align-items: center; 
-            gap: 12px; 
-            padding: 5px 0; 
+            gap: 15px; 
+            padding: 2px 0; 
         }
 
         .main-btn { color: var(--edison-bright); background: transparent !important; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 5px var(--edison-glow)); }
@@ -185,8 +195,8 @@
             display: flex; 
             justify-content: center; 
             align-items: center;
-            gap: 40px; 
-            padding: 8px 0; 
+            gap: 45px; 
+            padding: 5px 0; 
             border-top: 1px solid rgba(255, 210, 127, 0.1);
         }
         
@@ -195,12 +205,9 @@
             color: var(--edison-bright); 
             display: flex; justify-content: center; align-items: center;
             filter: drop-shadow(0 0 8px var(--edison-glow));
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
-        #btn-open-playlist { font-family: var(--font-header); font-size: 1.5rem; }
-
-        /* プレイリスト */
         #playlist-overlay { 
             flex: 0 0 100vw; width: 100vw; height: 100%; background: var(--bg-gradient);
             display: flex; flex-direction: column; padding: 10px; box-sizing: border-box;
@@ -213,9 +220,7 @@
         .playlist-header span { color:var(--edison-bright); font-size:0.6rem; }
         #btn-close-list { background:none; border:none; color:var(--edison-bright); font-size: 0.6rem; font-family: var(--font-header); }
 
-        /* リスト項目 */
         .item { border: none; display: flex; align-items: center; padding: 8px 4px; min-height: 52px; box-sizing: border-box; }
-        .item.folder { color: var(--edison-bright); font-size: 0.85rem; }
         .track-thumb { width: 38px; height: 38px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; box-shadow: 0 0 8px var(--edison-glow); }
         .thumb-placeholder { width: 38px; height: 38px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; margin-right: 10px; flex-shrink: 0; color: #666; font-size: 1rem; }
         .track-info-mid { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -433,26 +438,12 @@
     }
 
     tapToStart.onclick = () => { userHasStarted = true; loadingOverlay.style.display = 'none'; audio.play(); playIcon.className = 'ri-pause-fill'; };
-
     btnShuffle.onclick = () => { isShuffle = !isShuffle; btnShuffle.classList.toggle('active', isShuffle); };
     btnRepeat.onclick = () => { isRepeat = !isRepeat; btnRepeat.classList.toggle('active', isRepeat); };
-
     function formatTime(s) { if (isNaN(s)) return "00:00"; const m = Math.floor(s/60), sec = Math.floor(s%60); return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; }
-    
-    document.getElementById('btn-play').onclick = () => { 
-        if (audio.paused) { audio.play(); playIcon.className = 'ri-pause-fill'; } 
-        else { audio.pause(); playIcon.className = 'ri-play-fill'; } 
-    };
-
-    document.getElementById('btn-prev').onclick = () => {
-        if (audio.currentTime > 3) { audio.currentTime = 0; return; }
-        if (currentTrackIndex > 0) { currentTrackIndex--; loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file); renderList(); }
-    };
-
-    document.getElementById('btn-next').onclick = () => {
-        if (currentTrackIndex < playbackOrder.length - 1) { currentTrackIndex++; loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file); renderList(); }
-    };
-
+    document.getElementById('btn-play').onclick = () => { if (audio.paused) { audio.play(); playIcon.className = 'ri-pause-fill'; } else { audio.pause(); playIcon.className = 'ri-play-fill'; } };
+    document.getElementById('btn-prev').onclick = () => { if (audio.currentTime > 3) { audio.currentTime = 0; return; } if (currentTrackIndex > 0) { currentTrackIndex--; loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file); renderList(); } };
+    document.getElementById('btn-next').onclick = () => { if (currentTrackIndex < playbackOrder.length - 1) { currentTrackIndex++; loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file); renderList(); } };
     audio.onended = () => { if (isRepeat && !isShuffle) { audio.currentTime = 0; audio.play(); } else { document.getElementById('btn-next').click(); } };
 
     function updateFrame() {
@@ -464,7 +455,6 @@
         requestAnimationFrame(updateFrame);
     }
     requestAnimationFrame(updateFrame);
-
     seek.oninput = (e) => { isDragging = true; const val = parseFloat(e.target.value); seekProgress.style.width = val + '%'; audio.currentTime = (val / 100) * audio.duration; };
     seek.onchange = () => isDragging = false;
 </script>
