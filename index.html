@@ -22,7 +22,7 @@
             --bg-gradient: linear-gradient(180deg, #A67C52 0%, #3d220a 25%, #1a1a1a 50%, #0a0a0a 100%);
             --font-header: 'Michroma', sans-serif;
             --font-ogg: "Playfair Display", serif;
-            --thumb-size: 14px; 
+            --thumb-size: 12px; 
         }
 
         body {
@@ -68,74 +68,69 @@
             gap: 20px;
         }
         .spinner {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border: 4px solid rgba(255, 210, 127, 0.1);
             border-top: 4px solid var(--edison-bright);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            box-shadow: 0 0 15px var(--edison-glow);
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
         #tap-to-start {
             display: none;
             color: var(--edison-bright); font-weight: bold;
-            border: 2px solid var(--edison-bright); padding: 15px 30px; border-radius: 30px;
-            box-shadow: 0 0 20px var(--edison-glow);
-            animation: pulse 1.5s infinite;
-            text-align: center;
-            cursor: pointer;
+            border: 2px solid var(--edison-bright); padding: 10px 20px; border-radius: 30px;
             font-family: var(--font-header);
         }
 
         .player-wrapper {
             flex: 0 0 100vw; 
             width: 100vw;
-            padding: 25px 10px 10px 10px; 
+            padding: 10px 10px 5px 10px; /* 余白を大幅に削減 */
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
             height: 100%;
         }
 
-        header.glass-header { text-align: center; padding: 0 0 10px 0; flex-shrink: 0; }
+        header.glass-header { text-align: center; padding: 2px 0 5px 0; flex-shrink: 0; }
         .app-title { 
             margin: 0;
             color: var(--edison-bright); font-family: var(--font-ogg);
-            font-size: 1.1rem; letter-spacing: 1px; text-shadow: 0 0 12px var(--edison-glow), 0 0 4px var(--edison-bright); 
+            font-size: 0.9rem; letter-spacing: 1px; text-shadow: 0 0 10px var(--edison-glow); 
             white-space: nowrap;
         }
 
-        .info-header { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 5px 0; flex-shrink: 0; }
-        .text-fields { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 4px; overflow: hidden; }
-        .marquee-box { width: 100%; overflow: hidden; white-space: nowrap; text-align: center; min-height: 1.4em; }
-        .marquee-inner { display: inline-block; white-space: nowrap; will-change: transform; }
+        .info-header { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0; flex-shrink: 0; }
+        .text-fields { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 2px; overflow: hidden; }
+        .marquee-box { width: 100%; overflow: hidden; white-space: nowrap; text-align: center; min-height: 1.2em; }
+        .marquee-inner { display: inline-block; white-space: nowrap; }
         .scrolling-content { display: inline-block; padding-right: 50px; animation: scroll-slow 15s linear infinite; }
         @keyframes scroll-slow { 0% { transform: translateX(0); } 10% { transform: translateX(0); } 85% { transform: translateX(-50%); } 100% { transform: translateX(-50%); } }
         
-        #title-text { font-family: var(--font-ogg); font-weight: bold; font-size: 1.2rem; line-height: 1.2; color: #fff; text-shadow: 0 0 15px var(--edison-glow), 0 0 2px #fff; }
-        .artist-row { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
-        #artist-text { font-family: var(--font-ogg); font-size: 0.9rem; color: var(--edison-bright); line-height: 1.2; text-shadow: 0 0 10px var(--edison-glow); }
+        #title-text { font-family: var(--font-ogg); font-weight: bold; font-size: 1.1rem; color: #fff; text-shadow: 0 0 10px var(--edison-glow); }
+        .artist-row { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        #artist-text { font-family: var(--font-ogg); font-size: 0.8rem; color: var(--edison-bright); text-shadow: 0 0 8px var(--edison-glow); }
 
         .album-art-container {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 15px 0;
+            margin: 8px 0; /* マージンを削減 */
             flex-shrink: 1;
             min-height: 0;
         }
         
         #album-art-wrapper {
-            width: 65vw;
-            height: 65vw;
-            max-width: 250px;
-            max-height: 250px;
-            border-radius: 12px;
+            width: 50vw; /* サイズダウン */
+            height: 50vw;
+            max-width: 160px;
+            max-height: 160px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px var(--edison-glow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px var(--edison-glow);
             background: #2a2a2a;
             display: flex;
             justify-content: center;
@@ -143,79 +138,47 @@
             position: relative;
         }
 
-        #album-art {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-
-        #album-placeholder-icon {
-            font-size: 5rem;
-            color: #555;
-            display: flex;
-        }
+        #album-art { width: 100%; height: 100%; object-fit: cover; display: none; }
+        #album-placeholder-icon { font-size: 3rem; color: #555; }
 
         .main-controls-container {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-around; 
+            justify-content: space-between; 
             align-items: center;
             width: 100%;
-            padding: 10px 0; 
+            padding-bottom: 5px; 
         }
 
         section.container-2 { 
             position: relative;
             width: 90%;
             display: flex; flex-direction: column; align-items: center;
-            padding: 15px 0; 
+            padding: 5px 0; 
         }
         .seek-wrapper { 
-            position: relative; width: 100%; height: 4px; display: flex; align-items: center; 
+            position: relative; width: 100%; height: 3px; display: flex; align-items: center; 
             background: rgba(255, 255, 255, 0.1); border-radius: 2px;
-            overflow: visible;
         }
-        #seek-progress {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            background: var(--edison-bright);
-            box-shadow: 0 0 10px var(--edison-glow);
-            border-radius: 2px;
-            width: 0%;
-            z-index: 1;
-        }
-        input[type="range"]#main-seek { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 40px; outline: none; margin: 0; padding: 0; }
-        input[type="range"]#main-seek::-webkit-slider-thumb { -webkit-appearance: none; height: var(--thumb-size); width: var(--thumb-size); border-radius: 50%; background: #fff; box-shadow: 0 0 10px #fff, 0 0 15px var(--edison-bright); cursor: pointer; }
+        #seek-progress { position: absolute; left: 0; top: 0; height: 100%; background: var(--edison-bright); box-shadow: 0 0 8px var(--edison-glow); border-radius: 2px; width: 0%; z-index: 1; }
+        input[type="range"]#main-seek { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 30px; outline: none; margin: 0; padding: 0; }
+        input[type="range"]#main-seek::-webkit-slider-thumb { -webkit-appearance: none; height: var(--thumb-size); width: var(--thumb-size); border-radius: 50%; background: #fff; box-shadow: 0 0 10px var(--edison-bright); cursor: pointer; }
 
-        .time-labels {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            font-family: sans-serif;
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: var(--edison-bright);
-            text-shadow: 0 0 8px var(--edison-glow);
-            letter-spacing: 0.02em;
-        }
+        .time-labels { width: 100%; display: flex; justify-content: space-between; margin-top: 2px; font-size: 0.65rem; color: var(--edison-bright); }
 
         .container-3 { 
             width: 100%;
             display: flex; justify-content: center; align-items: center; 
-            gap: 20px; 
-            padding: 10px 0; 
+            gap: 12px; 
+            padding: 5px 0; 
         }
 
-        .main-btn { color: var(--edison-bright); background: transparent !important; transition: all 0.2s ease; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 8px var(--edison-glow)); }
-        .btn-outer { font-size: 1.4rem; opacity: 0.6; } 
-        .btn-side { font-size: 2.2rem; }
-        .btn-large { font-size: 4rem; filter: drop-shadow(0 0 15px var(--edison-glow)); }
-        .main-btn.active { opacity: 1; filter: drop-shadow(0 0 15px var(--edison-glow)) brightness(1.2); }
+        .main-btn { color: var(--edison-bright); background: transparent !important; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 5px var(--edison-glow)); }
+        .btn-outer { font-size: 1.1rem; opacity: 0.6; } 
+        .btn-side { font-size: 1.8rem; }
+        .btn-large { font-size: 3.2rem; filter: drop-shadow(0 0 12px var(--edison-glow)); }
+        .main-btn.active { opacity: 1; filter: brightness(1.2); }
 
         .status-action-row { 
             width: 100%;
@@ -223,68 +186,44 @@
             justify-content: center; 
             align-items: center;
             gap: 40px; 
-            margin-top: 5px; 
-            padding: 15px 0; 
+            padding: 8px 0; 
             border-top: 1px solid rgba(255, 210, 127, 0.1);
-            box-sizing: border-box;
         }
         
         .btn-status-side {
-            height: 44px; border-radius: 0; 
             border: none; background: transparent; 
             color: var(--edison-bright); 
             display: flex; justify-content: center; align-items: center;
-            cursor: pointer;
-            flex-shrink: 0;
             filter: drop-shadow(0 0 8px var(--edison-glow));
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
 
-        #btn-open-playlist { font-family: var(--font-header); font-size: 1.8rem; letter-spacing: 0.1em; padding: 0 10px; }
+        #btn-open-playlist { font-family: var(--font-header); font-size: 1.5rem; }
 
+        /* プレイリスト */
         #playlist-overlay { 
-            flex: 0 0 100vw; 
-            width: 100vw;
-            height: 100%; 
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            display: flex; 
-            flex-direction: column; 
-            padding: 12px; 
-            box-sizing: border-box; 
+            flex: 0 0 100vw; width: 100vw; height: 100%; background: var(--bg-gradient);
+            display: flex; flex-direction: column; padding: 10px; box-sizing: border-box;
             padding-bottom: env(safe-area-inset-bottom);
-            border-left: 1px solid rgba(255, 210, 127, 0.15);
-            overflow: hidden;
-            font-family: var(--font-ogg);
         }
-
         #track-list-container { flex: 1; position: relative; overflow: hidden; width: 100%; }
-        #track-list { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow-y: auto; list-style: none; padding: 0; margin: 0; -webkit-overflow-scrolling: touch; transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform; backface-visibility: hidden; }
-        #track-list::-webkit-scrollbar { display: none; }
-        #track-list { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .playlist-header { display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--edison-bright); padding-bottom: 6px; }
-        .playlist-header span { color:var(--edison-bright); font-family:var(--font-ogg); font-size:0.6rem; text-shadow: 0 0 8px var(--edison-glow); }
-        #btn-close-list { background:none; border:none; color:var(--edison-bright); font-size: 0.6rem; font-family: var(--font-header); display: flex; align-items: center; justify-content: center; box-shadow: none; padding: 0; margin: 0; cursor: pointer; filter: drop-shadow(0 0 5px var(--edison-glow)); }
-        .breadcrumb { font-size: 0.6rem; color: var(--edison-bright); margin: 6px 0; border-bottom: 1px solid rgba(255, 210, 127, 0.1); padding-bottom: 4px; font-family: var(--font-ogg); text-transform: uppercase; }
+        #track-list { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow-y: auto; list-style: none; padding: 0; margin: 0; }
         
-        /* タイトルリスト：新レイアウト */
-        .item { border: none; display: flex; align-items: center; padding: 10px 8px; min-height: 60px; box-sizing: border-box; }
-        .item.folder { color: var(--edison-bright); font-weight: bold; font-size: 0.9rem; text-shadow: 0 0 5px var(--edison-glow); }
-        
-        /* サムネイル（左） */
-        .track-thumb { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; margin-right: 12px; background: #222; flex-shrink: 0; box-shadow: 0 0 10px var(--edison-glow); }
-        .thumb-placeholder { width: 44px; height: 44px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0; box-shadow: 0 0 8px var(--edison-glow); color: #666; font-size: 1.2rem; }
+        .playlist-header { display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--edison-bright); padding-bottom: 4px; }
+        .playlist-header span { color:var(--edison-bright); font-size:0.6rem; }
+        #btn-close-list { background:none; border:none; color:var(--edison-bright); font-size: 0.6rem; font-family: var(--font-header); }
 
-        /* テキストエリア（中央） */
+        /* リスト項目 */
+        .item { border: none; display: flex; align-items: center; padding: 8px 4px; min-height: 52px; box-sizing: border-box; }
+        .item.folder { color: var(--edison-bright); font-size: 0.85rem; }
+        .track-thumb { width: 38px; height: 38px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; box-shadow: 0 0 8px var(--edison-glow); }
+        .thumb-placeholder { width: 38px; height: 38px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; margin-right: 10px; flex-shrink: 0; color: #666; font-size: 1rem; }
         .track-info-mid { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        .track-title-row { font-size: 0.95rem; color: #fff; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
-        .track-artist-row { font-size: 0.75rem; color: var(--edison-bright); opacity: 0.9; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-        /* ステータスエリア（右） */
-        .track-status-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; min-width: 45px; height: 100%; }
-        .track-duration { font-size: 0.75rem; color: var(--edison-bright); opacity: 0.8; font-family: sans-serif; }
-        .playing-indicator { font-size: 1rem; color: var(--edison-bright); filter: drop-shadow(0 0 5px var(--edison-glow)); margin-top: 4px; visibility: hidden; }
+        .track-title-row { font-size: 0.85rem; color: #fff; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .track-artist-row { font-size: 0.7rem; color: var(--edison-bright); opacity: 0.8; margin-top: 1px; }
+        .track-status-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; min-width: 40px; }
+        .track-duration { font-size: 0.65rem; color: var(--edison-bright); }
+        .playing-indicator { font-size: 0.9rem; color: var(--edison-bright); visibility: hidden; }
         .item.active .playing-indicator { visibility: visible; }
     </style>
 </head>
@@ -297,9 +236,9 @@
 
 <div id="app-container">
     <div class="player-wrapper">
+        <header class="glass-header"><h1 class="app-title">AMP FLOW</h1></header>
+        
         <section class="info-header">
-            <header class="glass-header"><h1 class="app-title">AMP FLOW</h1></header>
-
             <div class="album-art-container">
                 <div id="album-art-wrapper">
                     <i id="album-placeholder-icon" class="ri-music-2-line"></i>
@@ -338,7 +277,7 @@
             <div class="status-action-row">
                 <button class="btn-status-side" id="btn-folder-scan" style="position:relative;">
                     <i class="ri-folder-open-line"></i>
-                    <input type="file" id="folder-input" webkitdirectory directory multiple style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer;">
+                    <input type="file" id="folder-input" webkitdirectory directory multiple style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0;">
                 </button>
                 <button class="btn-status-side" id="btn-open-playlist"><i class="ri-play-list-fill"></i></button>
             </div>
@@ -350,7 +289,6 @@
             <span>MUSIC PLAYLIST</span>
             <button id="btn-close-list">CLOSE</button>
         </div>
-        <div id="breadcrumb" class="breadcrumb">ROOT /</div>
         <div id="track-list-container">
             <ul id="track-list"></ul>
         </div>
@@ -387,7 +325,6 @@
     let isRepeat = false;
 
     function navigateTo(page) {
-        appContainer.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
         appContainer.style.transform = `translateX(${page === 0 ? 0 : -50}%)`;
     }
 
@@ -408,76 +345,44 @@
 
     function renderList() {
         trackList.innerHTML = '';
-        document.getElementById('breadcrumb').innerText = "ROOT / " + currentPath.join(' / ').toUpperCase();
         if (currentPath.length > 0) {
-            const up = document.createElement('li'); up.className = 'item folder'; up.innerText = `.. (BACK)`;
+            const up = document.createElement('li'); up.className = 'item folder'; up.innerText = `.. BACK`;
             up.onclick = () => { currentPath.pop(); renderList(); }; trackList.appendChild(up);
         }
         const dirs = new Set(); 
         const folderTracks = [];
-        
         allFiles.forEach(f => {
             if (currentPath.every((p, i) => f.path[i] === p)) {
                 const next = f.path[currentPath.length];
                 if (f.path.length === currentPath.length + 1) folderTracks.push(f); else if (next) dirs.add(next);
             }
         });
-
         dirs.forEach(d => {
             const li = document.createElement('li'); li.className = 'item folder'; li.innerText = d.toUpperCase();
             li.onclick = () => { currentPath.push(d); renderList(); }; trackList.appendChild(li);
         });
-
         folderTracks.forEach((f, idx) => {
             const li = document.createElement('li');
             li.className = 'item track' + (currentFilteredTracks[playbackOrder[currentTrackIndex]]?.file === f.file ? ' active' : '');
-            
             li.innerHTML = `
                 <div class="thumb-placeholder"><i class="ri-music-2-line"></i></div>
-                <div class="track-info-mid">
-                    <span class="track-title-row">${f.name.replace(/\.[^/.]+$/, "")}</span>
-                    <span class="track-artist-row">Unknown Artist</span>
-                </div>
-                <div class="track-status-right">
-                    <span class="track-duration">--:--</span>
-                    <i class="ri-equalizer-fill playing-indicator"></i>
-                </div>
+                <div class="track-info-mid"><span class="track-title-row">${f.name.replace(/\.[^/.]+$/, "")}</span><span class="track-artist-row">Unknown Artist</span></div>
+                <div class="track-status-right"><span class="track-duration">--:--</span><i class="ri-equalizer-fill playing-indicator"></i></div>
             `;
-
-            // メタデータ読み込み（非同期）
             window.jsmediatags.read(f.file, {
                 onSuccess: (tag) => {
-                    const title = tag.tags.title || f.name.replace(/\.[^/.]+$/, "");
-                    const artist = tag.tags.artist || "Unknown Artist";
-                    li.querySelector('.track-title-row').innerText = title;
-                    li.querySelector('.track-artist-row').innerText = artist;
+                    li.querySelector('.track-title-row').innerText = tag.tags.title || f.name.replace(/\.[^/.]+$/, "");
+                    li.querySelector('.track-artist-row').innerText = tag.tags.artist || "Unknown Artist";
                     if (tag.tags.picture) {
                         const { data, format } = tag.tags.picture;
                         let b64 = ""; for (let i = 0; i < data.length; i++) b64 += String.fromCharCode(data[i]);
-                        const thumb = document.createElement('img');
-                        thumb.className = 'track-thumb';
+                        const thumb = document.createElement('img'); thumb.className = 'track-thumb';
                         thumb.src = `data:${format};base64,${window.btoa(b64)}`;
-                        const placeholder = li.querySelector('.thumb-placeholder');
-                        if (placeholder) placeholder.replaceWith(thumb);
+                        li.querySelector('.thumb-placeholder').replaceWith(thumb);
                     }
                 }
             });
-
-            // 簡易的な時間取得
-            const tempAudio = new Audio();
-            tempAudio.src = URL.createObjectURL(f.file);
-            tempAudio.onloadedmetadata = () => {
-                li.querySelector('.track-duration').innerText = formatTime(tempAudio.duration);
-                URL.revokeObjectURL(tempAudio.src);
-            };
-
-            li.onclick = () => { 
-                currentFilteredTracks = [...folderTracks]; 
-                initPlaybackOrder(idx); 
-                loadTrack(currentFilteredTracks[playbackOrder[0]].file); 
-                renderList(); // アクティブ表示更新用
-                navigateTo(0); 
-            };
+            li.onclick = () => { currentFilteredTracks = [...folderTracks]; initPlaybackOrder(idx); loadTrack(currentFilteredTracks[playbackOrder[0]].file); renderList(); navigateTo(0); };
             trackList.appendChild(li);
         });
     }
@@ -489,11 +394,9 @@
                 const j = Math.floor(Math.random() * (i + 1));
                 [playbackOrder[i], playbackOrder[j]] = [playbackOrder[j], playbackOrder[i]];
             }
-            if (startIndex !== -1) {
-                const currentInShuffle = playbackOrder.indexOf(startIndex);
-                [playbackOrder[0], playbackOrder[currentInShuffle]] = [playbackOrder[currentInShuffle], playbackOrder[0]];
-            }
-        } else if (startIndex !== -1) {
+            const currentInShuffle = playbackOrder.indexOf(startIndex);
+            [playbackOrder[0], playbackOrder[currentInShuffle]] = [playbackOrder[currentInShuffle], playbackOrder[0]];
+        } else {
             const head = playbackOrder.splice(startIndex);
             playbackOrder = head.concat(playbackOrder);
         }
@@ -501,19 +404,12 @@
     }
 
     function loadTrack(file) {
-        if (!userHasStarted) {
-            loadingOverlay.style.display = 'flex';
-            loadingSpinner.style.display = 'none';
-            tapToStart.style.display = 'block';
-        }
+        if (!userHasStarted) { loadingOverlay.style.display = 'flex'; loadingSpinner.style.display = 'none'; tapToStart.style.display = 'block'; }
         audio.pause();
         if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
         currentObjectUrl = URL.createObjectURL(file);
         audio.src = currentObjectUrl;
-        
-        albumArt.style.display = 'none';
-        albumPlaceholder.style.display = 'flex';
-
+        albumArt.style.display = 'none'; albumPlaceholder.style.display = 'flex';
         window.jsmediatags.read(file, {
             onSuccess: (tag) => {
                 document.getElementById('title-text').innerText = tag.tags.title || file.name;
@@ -522,20 +418,12 @@
                     const { data, format } = tag.tags.picture;
                     let b64 = ""; for (let i = 0; i < data.length; i++) b64 += String.fromCharCode(data[i]);
                     albumArt.src = `data:${format};base64,${window.btoa(b64)}`;
-                    albumArt.style.display = 'block';
-                    albumPlaceholder.style.display = 'none';
+                    albumArt.style.display = 'block'; albumPlaceholder.style.display = 'none';
                 }
-                updateMarquee('title-box', 'title-inner'); updateMarquee('artist-box', 'artist-inner');
-            },
-            onError: () => {
-                document.getElementById('title-text').innerText = file.name;
-                document.getElementById('artist-text').innerText = "UNKNOWN ARTIST";
                 updateMarquee('title-box', 'title-inner'); updateMarquee('artist-box', 'artist-inner');
             }
         });
-        if (userHasStarted) {
-            audio.play().then(() => { playIcon.className = 'ri-pause-fill'; });
-        }
+        if (userHasStarted) audio.play().then(() => { playIcon.className = 'ri-pause-fill'; });
     }
 
     function updateMarquee(boxId, innerId) {
@@ -546,19 +434,8 @@
 
     tapToStart.onclick = () => { userHasStarted = true; loadingOverlay.style.display = 'none'; audio.play(); playIcon.className = 'ri-pause-fill'; };
 
-    btnShuffle.onclick = () => {
-        isShuffle = !isShuffle;
-        btnShuffle.classList.toggle('active', isShuffle);
-        if (currentFilteredTracks.length > 0) {
-            const currentOriginalIdx = playbackOrder[currentTrackIndex];
-            initPlaybackOrder(currentOriginalIdx);
-        }
-    };
-
-    btnRepeat.onclick = () => {
-        isRepeat = !isRepeat;
-        btnRepeat.classList.toggle('active', isRepeat);
-    };
+    btnShuffle.onclick = () => { isShuffle = !isShuffle; btnShuffle.classList.toggle('active', isShuffle); };
+    btnRepeat.onclick = () => { isRepeat = !isRepeat; btnRepeat.classList.toggle('active', isRepeat); };
 
     function formatTime(s) { if (isNaN(s)) return "00:00"; const m = Math.floor(s/60), sec = Math.floor(s%60); return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; }
     
@@ -569,57 +446,26 @@
 
     document.getElementById('btn-prev').onclick = () => {
         if (audio.currentTime > 3) { audio.currentTime = 0; return; }
-        if (currentTrackIndex > 0) {
-            currentTrackIndex--;
-            loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file);
-            renderList();
-        } else if (isShuffle || isRepeat) { 
-            currentTrackIndex = playbackOrder.length - 1;
-            loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file);
-            renderList();
-        }
+        if (currentTrackIndex > 0) { currentTrackIndex--; loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file); renderList(); }
     };
 
     document.getElementById('btn-next').onclick = () => {
-        if (currentTrackIndex < playbackOrder.length - 1) {
-            currentTrackIndex++;
-            loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file);
-            renderList();
-        } else if (isShuffle || isRepeat) { 
-            currentTrackIndex = 0;
-            if (isShuffle) initPlaybackOrder(playbackOrder[playbackOrder.length-1]);
-            loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file);
-            renderList();
-        }
+        if (currentTrackIndex < playbackOrder.length - 1) { currentTrackIndex++; loadTrack(currentFilteredTracks[playbackOrder[currentTrackIndex]].file); renderList(); }
     };
 
-    audio.onended = () => {
-        if (isRepeat && !isShuffle) {
-            audio.currentTime = 0;
-            audio.play();
-        } else {
-            document.getElementById('btn-next').click();
-        }
-    };
+    audio.onended = () => { if (isRepeat && !isShuffle) { audio.currentTime = 0; audio.play(); } else { document.getElementById('btn-next').click(); } };
 
     function updateFrame() {
         if (audio.duration && !isDragging) {
             const progress = (audio.currentTime / audio.duration) * 100;
-            seek.value = progress;
-            seekProgress.style.width = progress + '%';
-            currentTimeDisplay.innerText = formatTime(audio.currentTime);
-            totalTimeDisplay.innerText = formatTime(audio.duration);
+            seek.value = progress; seekProgress.style.width = progress + '%';
+            currentTimeDisplay.innerText = formatTime(audio.currentTime); totalTimeDisplay.innerText = formatTime(audio.duration);
         }
         requestAnimationFrame(updateFrame);
     }
     requestAnimationFrame(updateFrame);
 
-    seek.oninput = (e) => { 
-        isDragging = true; 
-        const val = parseFloat(e.target.value);
-        seekProgress.style.width = val + '%';
-        audio.currentTime = (val / 100) * audio.duration; 
-    };
+    seek.oninput = (e) => { isDragging = true; const val = parseFloat(e.target.value); seekProgress.style.width = val + '%'; audio.currentTime = (val / 100) * audio.duration; };
     seek.onchange = () => isDragging = false;
 </script>
 </body>
