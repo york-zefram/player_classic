@@ -92,60 +92,106 @@
             box-sizing: border-box; 
             display: flex; 
             flex-direction: column; 
-            gap: 6px;
             height: 100%;
         }
 
-        header.glass-header { text-align: center; padding: 0 0 2px 0; }
+        header.glass-header { text-align: center; padding: 0 0 2px 0; flex-shrink: 0; }
         .app-title { 
             margin: 0;
             color: var(--neon-blue); font-family: var(--font-header);
-            font-size: 0.85rem; letter-spacing: 1px; text-shadow: 0 0 10px var(--neon-blue-glow); 
+            font-size: 1.1rem; letter-spacing: 1px; text-shadow: 0 0 10px var(--neon-blue-glow); 
             white-space: nowrap;
         }
 
-        .info-header { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 5px 0; }
+        .info-header { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 5px 0; flex-shrink: 0; }
         .text-fields { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 4px; overflow: hidden; }
-        .marquee-box { width: 100%; overflow: hidden; white-space: nowrap; text-align: center; min-height: 1.2em; }
+        .marquee-box { width: 100%; overflow: hidden; white-space: nowrap; text-align: center; min-height: 1.4em; }
         .marquee-inner { display: inline-block; white-space: nowrap; will-change: transform; }
         .scrolling-content { display: inline-block; padding-right: 50px; animation: scroll-slow 15s linear infinite; }
         @keyframes scroll-slow { 0% { transform: translateX(0); } 10% { transform: translateX(0); } 85% { transform: translateX(-50%); } 100% { transform: translateX(-50%); } }
         
-        #title-text { font-weight: bold; font-size: 1.0rem; line-height: 1.2; color: #fff; }
+        #title-text { font-weight: bold; font-size: 1.2rem; line-height: 1.2; color: #fff; }
         .artist-row { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
-        #artist-text { font-size: 0.8rem; color: var(--neon-blue); line-height: 1.2; }
+        #artist-text { font-size: 0.9rem; color: var(--neon-blue); line-height: 1.2; }
         
-        .btn-select { 
-            width: 90%;
-            height: 34px; border-radius: 17px; 
-            border: 2px solid var(--neon-blue); background: rgba(0, 242, 255, 0.1);
-            color: var(--neon-blue); font-size: 0.8rem;
-            font-family: var(--font-header); font-weight: bold; letter-spacing: 2px;
-            box-shadow: 0 0 10px var(--neon-blue-glow), inset 0 0 5px var(--neon-blue-glow);
-            text-shadow: 0 0 5px var(--neon-blue-glow);
-            transition: all 0.2s ease;
-            margin-top: 5px;
-        }
-
+        /* 修正：配置の仕組みをcontainer-3と統一 */
         .status-action-row { 
             width: 100%;
-            display: flex; justify-content: center; 
-            margin-top: 5px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; 
+            justify-content: center; /* 中央寄せに変更 */
+            align-items: center;
+            gap: 24px; /* A/Bボタン群のgap(20px)にボタンサイズ差を考慮して微調整 */
+            margin-top: 5px; 
+            padding: 10px 0; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
         }
-        .time-group { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-header); }
+        
+        .btn-status-side {
+            width: 44px; height: 44px; border-radius: 50%; 
+            border: 2px solid var(--neon-blue); background: rgba(0, 242, 255, 0.1); 
+            color: var(--neon-blue); font-family: var(--font-header); font-weight: bold; 
+            box-shadow: 0 0 10px var(--neon-blue-glow);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .time-group { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 4px; 
+            font-family: var(--font-header);
+            /* 中央寄せの中での幅を確保 */
+            min-width: 140px; 
+        }
         #time-display { color: #fff; font-size: 1.1rem; font-weight: bold; letter-spacing: 0.5px; }
-        #ab-range-text { color: var(--neon-blue); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px; }
+        #ab-range-text { color: var(--neon-blue); font-size: 0.85rem; font-weight: bold; letter-spacing: 1px; }
+
+        .main-controls-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around; 
+            align-items: center;
+            width: 100%;
+            padding: 10px 0; 
+        }
 
         section.container-2 { 
             position: relative;
-            height: 60px; display: flex; align-items: center; justify-content: center;
+            width: 100%;
+            display: flex; align-items: center; justify-content: center;
+            padding: 15px 0; 
         }
         .seek-wrapper { 
             position: relative; width: 87%; height: 6px; display: flex; align-items: center; 
             background: rgba(255, 255, 255, 0.1); border-radius: 3px;
         }
+        
+        .seek-wrapper::before, .seek-wrapper::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: 
+                linear-gradient(to right, var(--neon-blue) 1.5px, transparent 1.5px),
+                linear-gradient(to left, var(--neon-blue) 1.5px, transparent 1.5px);
+            background-position: left center, right center;
+            background-size: 10.02% 100%, 10.02% 100%;
+            background-repeat: repeat-x;
+            -webkit-mask-image: none;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .seek-wrapper::before { top: -14px; }
+        .seek-wrapper::after { bottom: -14px; }
+
         .seek-bg-layer { position: absolute; top: 0; bottom: 0; background: var(--neon-blue); z-index: 1; border-radius: 3px; box-shadow: 0 0 15px var(--neon-blue-glow); }
-        input[type="range"]#main-seek { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 40px; outline: none; margin: 0; padding: 0; }
+        input[type="range"]#main-seek { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 60px; outline: none; margin: 0; padding: 0; }
         input[type="range"]#main-seek::-webkit-slider-thumb { -webkit-appearance: none; height: var(--thumb-size); width: var(--thumb-size); border-radius: 50%; background: #fff; box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--neon-blue-glow); }
 
         .marker { 
@@ -156,7 +202,12 @@
             top: 50%; margin-left: calc(var(--marker-size) / -2); transform: translate3d(0, -50%, 0);
         }
 
-        .container-3 { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 80px; }
+        .container-3 { 
+            width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 20px; 
+            padding: 10px 0; 
+        }
+
         .main-btn { color: var(--neon-blue); background: transparent !important; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(0, 242, 255, 0.3); }
         .btn-large { width: 76px; height: 76px; border-radius: 50%; border: 2px solid var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue-glow), inset 0 0 10px var(--neon-blue-glow); }
         .btn-small { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue-glow), inset 0 0 10px var(--neon-blue-glow); opacity: 0.9; }
@@ -164,18 +215,31 @@
         .btn-icon-s { font-size: 0.9rem; font-family: var(--font-header); font-weight: bold; filter: drop-shadow(0 0 5px var(--neon-blue)); }
         .svg-icon { width: 1em; height: 1em; fill: currentColor; }
 
-        .container-tempo { display: flex; flex-direction: column; gap: 12px; padding: 8px 10px; margin-top: 10px; }
+        .container-tempo { 
+            width: 100%;
+            display: flex; flex-direction: column; gap: 8px; padding: 5px 10px; 
+            box-sizing: border-box;
+            margin-top: auto; 
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+        }
         .tempo-labels { display: flex; justify-content: space-between; color: var(--neon-blue); font-family: var(--font-header); font-size: 0.7rem; opacity: 0.8; padding: 0 5%; }
-        .tempo-slider-wrapper { position: relative; width: 88%; height: 40px; display: flex; align-items: center; margin: 0 auto; }
+        .tempo-slider-wrapper { position: relative; width: 88%; height: 36px; display: flex; align-items: center; margin: 0 auto; }
         .tempo-bg-layer { position: absolute; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; z-index: 1; top: 50%; transform: translateY(-50%); }
-        input[type="range"]#tempo-slider { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 50px; outline: none; }
+        input[type="range"]#tempo-slider { -webkit-appearance: none; width: 100%; background: transparent; position: relative; z-index: 5; height: 40px; outline: none; }
         input[type="range"]#tempo-slider::-webkit-slider-thumb { -webkit-appearance: none; height: var(--thumb-size); width: var(--thumb-size); border-radius: 50%; background: #fff; box-shadow: 0 0 10px #fff, 0 0 30px var(--neon-blue-glow); }
         
-        .tempo-controls { display: flex; justify-content: space-between; align-items: center; width: 90%; margin: 0 auto; }
-        .btn-tempo { height: 30px; border-radius: 15px; font-family: var(--font-header); font-size: 0.75rem; background: transparent !important; border: 2px solid var(--neon-blue); color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue-glow); }
-
-        .container-folder-scan { display: flex; justify-content: center; align-items: center; margin-top: 10px; }
-        .btn-folder-scan { width: 90%; height: 34px; border-radius: 17px; border: 2px solid var(--neon-blue); background: rgba(0, 242, 255, 0.1); color: var(--neon-blue); font-family: var(--font-header); font-weight: bold; box-shadow: 0 0 10px var(--neon-blue-glow); }
+        .tempo-controls { display: flex; justify-content: space-between; align-items: center; width: 90%; margin: 0 auto; gap: 12px; }
+        .btn-tempo { 
+            width: 44px; height: 44px; border-radius: 50%; 
+            font-family: var(--font-header); font-size: 1rem; 
+            background: transparent !important; border: 2px solid var(--neon-blue); 
+            color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue-glow); 
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            letter-spacing: 1px;
+            padding-top: 1px;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 0;
+        }
 
         #playlist-overlay { 
             flex: 0 0 100vw; 
@@ -208,17 +272,49 @@
             backface-visibility: hidden;
         }
 
+        #track-list::-webkit-scrollbar { display: none; }
+        #track-list { -ms-overflow-style: none; scrollbar-width: none; }
+
         .playlist-header { display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--neon-blue); padding-bottom: 6px; }
-        #btn-close-list { background:none; border:1px solid var(--neon-blue); color:var(--neon-blue); border-radius:10px; padding:3px 10px; font-size: 0.55rem; font-family: var(--font-header); }
-        .breadcrumb { font-size: 0.5rem; color: var(--neon-blue); margin: 6px 0; border-bottom: 1px solid #333; padding-bottom: 4px; font-family: var(--font-header); text-transform: uppercase; }
+        
+        .playlist-header span { color:var(--neon-blue); font-family:var(--font-header); font-size:0.6rem; }
+        #btn-close-list { 
+            background:none; border:none; color:var(--neon-blue); 
+            font-size: 0.6rem; font-family: var(--font-header); 
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: none; padding: 0; margin: 0; cursor: pointer;
+        }
+        .breadcrumb { font-size: 0.6rem; color: var(--neon-blue); margin: 6px 0; border-bottom: 1px solid #333; padding-bottom: 4px; font-family: var(--font-header); text-transform: uppercase; }
         
         .item { border-bottom: 1px solid #222; display: flex; text-align: left; box-sizing: border-box; }
-        .item.folder { color: var(--neon-blue); font-weight: bold; font-size: 0.75rem; align-items: center; height: 38px; line-height: 38px; }
-        .item.track { padding: 6px 0; flex-direction: column; justify-content: center; min-height: 38px; }
-        .item-upper { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-        .item-lower { display: block; color: #888; font-size: 0.55rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .track-name-part { flex: 1; font-size: 0.7rem; color: #fff; font-weight: bold; overflow: hidden; text-overflow: ellipsis; }
-        .track-duration-part { flex-shrink: 0; color: #888; font-size: 0.55rem; font-family: var(--font-header); text-align: right; min-width: 38px; }
+        
+        .item.folder { 
+            color: var(--neon-blue); font-weight: bold; 
+            font-size: 0.9rem;
+            align-items: center; 
+            height: 44px; 
+            line-height: 44px; 
+            padding: 0 8px; 
+        }
+        .item.track { 
+            padding: 0 8px; 
+            flex-direction: column; 
+            justify-content: center; 
+            height: 44px; 
+        }
+        .item-upper { display: flex; align-items: center; justify-content: space-between; width: 100%; overflow: hidden; }
+        .item-lower { display: block; color: #888; font-size: 0.65rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .track-name-part { 
+            flex: 1; 
+            font-size: 0.85rem;
+            color: #fff; font-weight: bold; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            white-space: nowrap;
+            margin-right: 8px;
+        }
+        .track-duration-part { flex-shrink: 0; color: #888; font-size: 0.65rem; font-family: var(--font-header); text-align: right; min-width: 44px; }
     </style>
 </head>
 <body>
@@ -236,32 +332,43 @@
                 <div class="marquee-box" id="title-box"><div id="title-inner" class="marquee-inner"><span id="title-text">SELECT TRACK</span></div></div>
                 <div class="artist-row">
                     <div class="marquee-box" id="artist-box"><div id="artist-inner" class="marquee-inner"><span id="artist-text">UNKNOWN ARTIST</span></div></div>
-                    <button class="btn-select" id="btn-select-file">SELECT TRACK</button>
                 </div>
             </div>
+            
             <div class="status-action-row">
+                <button class="btn-status-side" id="btn-folder-scan" style="position:relative;">
+                    <svg class="svg-icon" style="font-size:1.4rem;" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                    <input type="file" id="folder-input" webkitdirectory directory multiple style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer;">
+                </button>
+                
                 <div class="time-group">
                     <div id="time-display">00:00 / 00:00</div>
                     <div id="ab-range-text">00:00 ▶ 00:00</div>
                 </div>
+                
+                <button class="btn-status-side" id="btn-open-playlist">
+                    <svg class="svg-icon" style="font-size:1.4rem;" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </button>
             </div>
         </section>
 
-        <section class="container-2">
-            <div class="seek-wrapper" id="seek-wrapper">
-                <div class="seek-bg-layer" id="seek-bg"></div>
-                <input type="range" id="main-seek" min="0" max="100" value="0" step="0.1">
-                <div class="marker" id="marker-a">A</div>
-                <div class="marker" id="marker-b">B</div>
-            </div>
-        </section>
+        <div class="main-controls-container">
+            <section class="container-2">
+                <div class="seek-wrapper" id="seek-wrapper">
+                    <div class="seek-bg-layer" id="seek-bg"></div>
+                    <input type="range" id="main-seek" min="0" max="100" value="0" step="0.1">
+                    <div class="marker" id="marker-a">A</div>
+                    <div class="marker" id="marker-b">B</div>
+                </div>
+            </section>
 
-        <section class="container-3">
-            <button class="main-btn btn-small" id="btn-set-a"><span class="btn-icon-s">A</span></button>
-            <button class="main-btn btn-large" id="btn-back-to-a"><span class="btn-icon"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></span></button>
-            <button class="main-btn btn-large" id="btn-play"><span class="btn-icon" id="play-icon"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
-            <button class="main-btn btn-small" id="btn-set-b"><span class="btn-icon-s">B</span></button>
-        </section>
+            <section class="container-3">
+                <button class="main-btn btn-small" id="btn-set-a"><span class="btn-icon-s">A</span></button>
+                <button class="main-btn btn-large" id="btn-back-to-a"><span class="btn-icon"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></span></button>
+                <button class="main-btn btn-play btn-large" id="btn-play"><span class="btn-icon" id="play-icon"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+                <button class="main-btn btn-small" id="btn-set-b"><span class="btn-icon-s">B</span></button>
+            </section>
+        </div>
 
         <section class="container-tempo">
             <div class="tempo-labels"><span>-50%</span> <span>0%</span> <span>+50%</span></div>
@@ -271,22 +378,15 @@
             </div>
             <div class="tempo-controls">
                 <button class="main-btn btn-tempo" id="tempo-minus">－</button>
-                <button class="main-btn btn-tempo" id="tempo-reset">RESET</button>
+                <button class="main-btn btn-tempo" id="tempo-reset">〇</button>
                 <button class="main-btn btn-tempo" id="tempo-plus">＋</button>
             </div>
-        </section>
-
-        <section class="container-folder-scan">
-            <button class="btn-folder-scan" id="btn-folder-scan" style="position:relative;">
-                FOLDER SCAN
-                <input type="file" id="folder-input" webkitdirectory directory multiple style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0;">
-            </button>
         </section>
     </div>
 
     <div id="playlist-overlay">
         <div class="playlist-header">
-            <span style="color:var(--neon-blue); font-family:var(--font-header); font-size:0.55rem;">MUSIC PLAYLIST</span>
+            <span>MUSIC PLAYLIST</span>
             <button id="btn-close-list">CLOSE</button>
         </div>
         <div id="breadcrumb" class="breadcrumb">ROOT /</div>
@@ -328,14 +428,12 @@
         appContainer.style.transform = `translateX(${currentPage === 0 ? 0 : -50}%)`;
     }
 
-    // スワイプ制御
     let startX = 0, startY = 0, isSwiping = false, currentTargetFolder = null;
 
     window.addEventListener('touchstart', (e) => {
         isSwiping = true;
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
-        
         if (currentPage === 1) {
             currentTargetFolder = e.target.closest('.item.folder');
             appContainer.style.transition = 'none';
@@ -348,7 +446,6 @@
         const currentY = e.touches[0].clientY;
         const diffX = currentX - startX;
         const diffY = currentY - startY;
-
         if (Math.abs(diffX) > Math.abs(diffY)) {
             if (currentPage === 1) {
                 if (diffX > 0 && currentPath.length === 0) {
@@ -364,20 +461,12 @@
         isSwiping = false;
         const endX = e.changedTouches[0].clientX;
         const diffX = endX - startX;
-
         if (currentPage === 1) {
             if (diffX > 80) {
-                if (currentPath.length > 0) {
-                    goBackLevel();
-                } else {
-                    navigateTo(0);
-                }
-            } 
-            else if (diffX < -80 && currentTargetFolder) {
+                if (currentPath.length > 0) goBackLevel(); else navigateTo(0);
+            } else if (diffX < -80 && currentTargetFolder) {
                 const folderName = currentTargetFolder.getAttribute('data-folder');
-                if (folderName && folderName !== "__parent__") {
-                    goForwardLevel(folderName);
-                }
+                if (folderName && folderName !== "__parent__") goForwardLevel(folderName);
             } else {
                 navigateTo(currentPage);
             }
@@ -389,13 +478,10 @@
         trackList.style.transition = 'none';
         trackList.style.transform = 'translateX(0)';
         void trackList.offsetWidth; 
-        
         currentPath.push(folderName);
         renderList();
-        
         trackList.style.transform = 'translateX(100%)';
         void trackList.offsetWidth; 
-
         requestAnimationFrame(() => {
             trackList.style.transition = 'transform 0.35s cubic-bezier(0.23, 1, 0.32, 1)';
             trackList.style.transform = 'translateX(0)';
@@ -405,14 +491,12 @@
     function goBackLevel() {
         trackList.style.transition = 'transform 0.35s cubic-bezier(0.23, 1, 0.32, 1)';
         trackList.style.transform = 'translateX(100%)';
-        
         setTimeout(() => {
             currentPath.pop();
             renderList();
             trackList.style.transition = 'none';
             trackList.style.transform = 'translateX(-100%)';
             void trackList.offsetWidth; 
-
             requestAnimationFrame(() => {
                 trackList.style.transition = 'transform 0.35s cubic-bezier(0.23, 1, 0.32, 1)';
                 trackList.style.transform = 'translateX(0)';
@@ -420,7 +504,7 @@
         }, 250);
     }
 
-    document.getElementById('btn-select-file').onclick = () => { if(allFiles.length > 0) navigateTo(1); };
+    document.getElementById('btn-open-playlist').onclick = () => { if(allFiles.length > 0) navigateTo(1); };
     document.getElementById('btn-close-list').onclick = () => navigateTo(0);
 
     const DB_NAME = "ZeframPlayerDB_V2", STORE_NAME = "FilesStore";
@@ -429,7 +513,7 @@
 
     const openDB = () => new Promise((resolve, reject) => {
         const request = indexedDB.open(DB_NAME, 2);
-        request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains(STORE_NAME)) e.target.result.createObjectStore(STORE_NAME); };
+        request.onupgradedeeded = (e) => { if (!e.target.result.objectStoreNames.contains(STORE_NAME)) e.target.result.createObjectStore(STORE_NAME); };
         request.onsuccess = (e) => resolve(e.target.result);
         request.onerror = (e) => reject(e.target.error);
     });
@@ -478,6 +562,22 @@
         } catch (e) { return false; }
     }
 
+    folderInput.onchange = async (e) => {
+        if (!window.showDirectoryPicker && folderInput.files.length > 0) {
+            allFiles = [];
+            for (let i = 0; i < folderInput.files.length; i++) {
+                const f = folderInput.files[i];
+                if (f.type.startsWith('audio/') || f.name.match(/\.(mp3|m4a|wav)$/i)) {
+                    const pathArr = f.webkitRelativePath.split('/');
+                    allFiles.push({ name: f.name, path: pathArr, file: f });
+                }
+            }
+            currentPath = [];
+            renderList();
+            navigateTo(1);
+        }
+    };
+
     document.getElementById('btn-folder-scan').onclick = async (e) => {
         if (window.showDirectoryPicker) {
             e.preventDefault();
@@ -500,12 +600,8 @@
         trackList.innerHTML = '';
         document.getElementById('breadcrumb').innerText = "ROOT / " + currentPath.join(' / ').toUpperCase();
         if (currentPath.length > 0) {
-            const up = document.createElement('li'); 
-            up.className = 'item folder'; 
-            up.innerText = `.. (BACK)`;
-            up.setAttribute('data-folder', '__parent__');
-            up.onclick = (e) => { e.stopPropagation(); goBackLevel(); }; 
-            trackList.appendChild(up);
+            const up = document.createElement('li'); up.className = 'item folder'; up.innerText = `.. (BACK)`; up.setAttribute('data-folder', '__parent__');
+            up.onclick = (e) => { e.stopPropagation(); goBackLevel(); }; trackList.appendChild(up);
         }
         const dirs = new Set(), files = [];
         allFiles.forEach(f => {
@@ -515,12 +611,8 @@
             }
         });
         dirs.forEach(d => {
-            const li = document.createElement('li'); 
-            li.className = 'item folder'; 
-            li.innerText = d.toUpperCase();
-            li.setAttribute('data-folder', d);
-            li.onclick = (e) => { e.stopPropagation(); goForwardLevel(d); }; 
-            trackList.appendChild(li);
+            const li = document.createElement('li'); li.className = 'item folder'; li.innerText = d.toUpperCase(); li.setAttribute('data-folder', d);
+            li.onclick = (e) => { e.stopPropagation(); goForwardLevel(d); }; trackList.appendChild(li);
         });
         files.forEach(f => {
             const li = document.createElement('li'), uniqueId = `f-${f.name.replace(/[^\w]/g, '')}`, displayName = f.name.substring(0, f.name.lastIndexOf('.')) || f.name;
@@ -608,7 +700,6 @@
     function updateFrame() {
         if (audio.duration && !isDragging) {
             const curTime = audio.currentTime, duration = audio.duration, curP = (curTime / duration) * 100;
-            if (curP >= posB || curP < posA - 0.2) audio.currentTime = (posA / 100) * duration;
             seek.value = curP;
             const timeStr = `${formatTime(curTime)} / ${formatTime(duration)}`;
             if (lastTimeStr !== timeStr) { timeDisplay.innerText = timeStr; lastTimeStr = timeStr; }
@@ -617,6 +708,15 @@
         requestAnimationFrame(updateFrame);
     }
     requestAnimationFrame(updateFrame);
+
+    audio.ontimeupdate = () => {
+        if (audio.duration && !isDragging) {
+            const curTime = audio.currentTime, duration = audio.duration, curP = (curTime / duration) * 100;
+            if (curP >= posB || curP < posA - 0.2) {
+                audio.currentTime = (posA / 100) * duration;
+            }
+        }
+    };
 
     seek.oninput = (e) => { isDragging = true; audio.muted = true; let val = parseFloat(e.target.value); if (val < posA) val = posA; else if (val > posB) val = posB; e.target.value = val; audio.currentTime = (val / 100) * audio.duration; updateSeekStyle(); };
     seek.onchange = () => { isDragging = false; audio.muted = false; };
@@ -628,9 +728,7 @@
     function setupDraggable(el, isA) { 
         let dragging = false;
         const move = (e) => { 
-            if (!dragging) return; 
-            isDragging = true; 
-            // マーカー操作時はミュートにしない（音を流したままにする）
+            if (!dragging) return; isDragging = true; 
             const rect = seekWrapper.getBoundingClientRect(); const thumbSize = 32;
             const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
             let val = ((x - thumbSize / 2) / (rect.width - thumbSize)) * 100;
@@ -645,7 +743,6 @@
         window.addEventListener('mouseup', stop); window.addEventListener('touchend', stop, {passive: true}); 
     }
     setupDraggable(markerA, true); setupDraggable(markerB, false);
-
     window.onload = () => { updateSeekStyle(); checkMarquee('title-inner', 'title-box'); checkMarquee('artist-inner', 'artist-box'); loadSavedList(); };
     window.onresize = () => updateSeekStyle();
 </script>
